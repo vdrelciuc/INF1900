@@ -1,0 +1,42 @@
+################################################################################
+##### Common variable definitions to be included by subdirectory Makefiles
+#####
+##### Note: This Makefile adds include directories by using the INCLUDES
+##### variable, which must be defined in the including Makefile
+##### before this Makefile is included for it to function properly
+################################################################################
+
+# Target microcontroller name
+MCU = atmega324pa
+
+# Build directory
+BUILD_DIR_ROOT = build
+ifeq ($(debug),1)
+	BUILD_DIR := $(BUILD_DIR_ROOT)/debug
+else
+	BUILD_DIR := $(BUILD_DIR_ROOT)/release
+endif
+
+# Preprocessor settings
+# Note: INCLUDES variable must be defined before this file
+# is included to add it to the list of preprocessor flags
+CPPFLAGS := -MMD -MP $(INCLUDES)
+ifeq ($(debug),1)
+	CPPFLAGS += -g -DDEBUG
+endif
+
+# Compiler settings
+CC = avr-gcc
+COMMON_FLAGS := -mmcu=$(MCU) -Os \
+	-fpack-struct -fshort-enums \
+	-funsigned-bitfields -funsigned-char \
+	-Wall -Wpedantic -Wextra -Woverflow -Wno-unused-function -Wno-switch
+CFLAGS := $(COMMON_FLAGS)
+CXXFLAGS := $(COMMON_FLAGS) -fno-exceptions -std=c++14
+
+# Source files
+CSRCS := $(wildcard *.c)
+CXXSRCS := $(wildcard *.cpp)
+
+# Object files
+OBJS := $(CSRCS:%.c=$(BUILD_DIR)/%.o) $(CXXSRCS:%.cpp=$(BUILD_DIR)/%.o)

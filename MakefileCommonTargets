@@ -1,0 +1,28 @@
+################################################################################
+##### Common targets to be included by subdirectory Makefiles
+#####
+##### Note: this Makefile uses many variables defined in
+##### MakefileCommonVariables, so the including Makefile must make sure
+##### to include MakefileCommonVariables before MakefileCommonTargets
+################################################################################
+
+# Compile C source files
+$(BUILD_DIR)/%.o: %.c
+	@echo "Compiling: $<"
+	@mkdir -p $(BUILD_DIR)
+	@$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
+
+# Compile C++ source files
+$(BUILD_DIR)/%.o: %.cpp
+	@echo "Compiling: $<"
+	@mkdir -p $(BUILD_DIR)
+	@$(CC) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
+	
+# Dependencies
+-include $(BUILD_DIR)/*.d
+
+# Clean
+.PHONY: clean
+clean:
+	@echo "Cleaning build files"
+	@$(RM) -r $(BUILD_DIR_ROOT)

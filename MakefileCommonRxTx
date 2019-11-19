@@ -1,0 +1,59 @@
+################################################################################
+##### Makefile for compiling a program which includes the static library
+################################################################################
+
+################################################################################
+##### Compilation settings and variables
+################################################################################
+
+INCLUDES = -I../lib
+include ../MakefileCommonVariables
+
+EXEC = program
+
+# Programmer ID
+AVRDUDE_PROGRAMMERID = usbasp
+# For copying from ELF to HEX object format
+OBJCOPY = avr-objcopy
+# For transferring program to microcontroller
+AVRDUDE = avrdude
+# Object format for files copied in .hex
+HEXFORMAT = ihex
+
+# Linker settings
+LDLIBS = -lrobot -lm
+LIB_DIR = ../lib/$(BUILD_DIR)
+LDFLAGS := -L$(LIB_DIR) -Wl,-Map,$(BUILD_DIR)/$(EXEC).out.map -mmcu=$(MCU)
+
+# Dependency on library
+LIBNAME := $(LIB_DIR)/librobot.a
+
+################################################################################
+##### Targets
+################################################################################
+
+.PHONY: all
+all: $(BUILD_DIR)/$(EXEC).out
+
+# Build executable
+$(BUILD_DIR)/$(EXEC).out: $(OBJS) $(LIBNAME)
+	@echo -n "Building program"
+    ifeq ($(debug),1)
+		@echo -n " in debug mode"
+    endif
+	@echo ": $@"
+	@$(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $@
+	# Note: using OBJS rather than $^ to avoid including the library (in the dependencies list) directly
+
+# Make HEX executable from ELF executable
+$(BUILD_DIR)/$(EXEC).hex: $(BUILD_DIR)/$(EXEC).out
+	@echo "Copying into Intel HEX format"
+	@$(OBJCOPY) -j .text -j .data -O $(HEXFORMAT) $< $@
+
+# Install program on microcontroller with avrdude
+.PHONY: install
+install: $(BUILD_DIR)/$(EXEC).hex
+	@echo "Installing on microcontroller"
+	@$(AVRDUDE) -c $(AVRDUDE_PROGRAMMERID) -p $(MCU) -P -e -U flash:w:$<
+
+include ../MakefileCommonTargets

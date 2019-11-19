@@ -1,0 +1,12 @@
+var searchData=
+[
+  ['firstsensoronblack',['firstSensorOnBlack',['../ExitConditions_8cpp.html#af901b128b46296c096d83262619863e3',1,'firstSensorOnBlack():&#160;ExitConditions.cpp'],['../ExitConditions_8h.html#af901b128b46296c096d83262619863e3',1,'firstSensorOnBlack():&#160;ExitConditions.cpp']]],
+  ['followcorner',['followCorner',['../TrackingAlgos_8cpp.html#a81af9652c37853efbc63e6c94afc8da4',1,'followCorner(bool turnClockwise):&#160;TrackingAlgos.cpp'],['../TrackingAlgos_8h.html#a81af9652c37853efbc63e6c94afc8da4',1,'followCorner(bool turnClockwise):&#160;TrackingAlgos.cpp']]],
+  ['followline',['followLine',['../TrackingAlgos_8cpp.html#aae81136ac7816e0cbe6402f4477f689d',1,'followLine(int16_t speed, uint8_t initialTurnDifference, uint8_t maxTurnDifference, uint8_t msTurnCorrectionDelay, bool useEdgeSensors, bool(*exitConditionFunction)(), bool canOnlyTurnRight):&#160;TrackingAlgos.cpp'],['../TrackingAlgos_8h.html#af214519316a25cb8940a8c79c3a8b1a3',1,'followLine(int16_t speed, uint8_t initialTurnDifference, uint8_t maxTurnDifference, uint8_t turnCorrectionDelay, bool useEdgeSensors, bool(*exitConditionFunction)(), bool canOnlyTurnRight=false):&#160;TrackingAlgos.cpp']]],
+  ['followrectangle',['followRectangle',['../TrackingAlgos_8cpp.html#a8bc403c09c873559c2979e5f8856166e',1,'followRectangle():&#160;TrackingAlgos.cpp'],['../TrackingAlgos_8h.html#a8bc403c09c873559c2979e5f8856166e',1,'followRectangle():&#160;TrackingAlgos.cpp']]],
+  ['followsection1',['followSection1',['../Section1_8cpp.html#aa585dee57603619d3eefa00081ca21a6',1,'followSection1():&#160;Section1.cpp'],['../Section1_8h.html#aa585dee57603619d3eefa00081ca21a6',1,'followSection1():&#160;Section1.cpp']]],
+  ['followsection2',['followSection2',['../Section2_8cpp.html#a3f894b3393d189142f75e9265c091eb4',1,'followSection2():&#160;Section2.cpp'],['../Section2_8h.html#a3f894b3393d189142f75e9265c091eb4',1,'followSection2():&#160;Section2.cpp']]],
+  ['followsection3',['followSection3',['../Section3_8cpp.html#aa8053caa0e600370ea2bb6a7e1182d7b',1,'followSection3():&#160;Section3.cpp'],['../Section3_8h.html#aa8053caa0e600370ea2bb6a7e1182d7b',1,'followSection3():&#160;Section3.cpp']]],
+  ['followsection4',['followSection4',['../Section4_8cpp.html#a1d327afebf63f930da9be302c13265ec',1,'followSection4():&#160;Section4.cpp'],['../Section4_8h.html#a1d327afebf63f930da9be302c13265ec',1,'followSection4():&#160;Section4.cpp']]],
+  ['forcestopmotors',['forceStopMotors',['../Motors_8cpp.html#add8ed8aa6858c71811f0928698b072d5',1,'lib']]]
+];
